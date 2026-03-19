@@ -1,10 +1,31 @@
 ---
 layout: layout.njk
 title: Home
+showTitle: false
 ---
-<h1>Posts</h1>
-<ul>
-  {% for post in collections.posts | reverse %}
-    <li><a href="{{ post.url }}">{{ post.data.title }}</a></li>
-  {% endfor %}
-</ul>
+<section class="home-lead">
+  <p class="lede-mark">woodson42.com</p>
+  <h1>Notes written slowly.</h1>
+  <p>
+    Derek Sivers' site works because it refuses decoration and trusts writing,
+    pacing, and typography to do the job. This version borrows that restraint:
+    a narrow reading column, visible dates, blue links, and enough warmth in
+    the page to feel kept rather than generated.
+  </p>
+</section>
+
+<section aria-labelledby="archive-heading">
+  <div class="archive-head">
+    <h2 id="archive-heading">Archive</h2>
+    <p>{{ collections.posts | length }} essay{% if collections.posts | length != 1 %}s{% endif %}</p>
+  </div>
+
+  <ol class="essay-list">
+    {% for post in collections.posts | reverse %}
+      <li>
+        <time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
+        <a href="{{ post.url }}">{{ post.data.title }}</a>
+      </li>
+    {% endfor %}
+  </ol>
+</section>
