@@ -1,0 +1,2 @@
+pelican>=4.9,<5
+pytest>=8,<9
