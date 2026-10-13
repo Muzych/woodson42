@@ -36,23 +36,25 @@
     main {
       width: min(92vw, 1200px);
       padding: clamp(1.5rem, 4vw, 3rem);
+      container-type: inline-size;
     }
 
     h1 {
       margin: 0;
       text-align: center;
       font-family: "Cormorant Garamond", "Times New Roman", serif;
-      font-size: clamp(3.6rem, 9.6vw, 8rem);
+      /* "Reality Is But" is ~5.81em; 17cqi keeps that line inside the column. */
+      font-size: min(clamp(3.6rem, 9.6vw, 8rem), 17cqi);
       font-weight: 700;
       line-height: 1.12;
       letter-spacing: 0.03em;
-      text-wrap: balance;
+      white-space: nowrap;
     }
   </style>
 </head>
 <body>
   <main>
-    <h1>Reality Is But An Illusion.</h1>
+    <h1>Reality Is But<br>An Illusion.</h1>
   </main>
 </body>
 </html>

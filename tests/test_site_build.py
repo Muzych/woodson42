@@ -33,9 +33,12 @@ def test_pelican_build_outputs_the_landing_page(tmp_path: Path) -> None:
 
     html = index_html.read_text(encoding="utf-8")
     assert "Reality Is But An Illusion." in html
+    assert "Reality Is But<br>An Illusion." in html
+    assert "white-space: nowrap" in html
     assert "fonts.googleapis.com" in html
     assert "background: #000" in html or "background-color: #000" in html
     assert "clamp(3.6rem, 9.6vw, 8rem)" in html
+    assert "17cqi" in html
     assert "line-height: 1.12" in html
 
     cname = output_dir / "CNAME"
